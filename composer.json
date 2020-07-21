@@ -2,13 +2,22 @@
     "name": "godruoyi/laravel-tabler-ui",
     "description": "Package description here.",
     "license": "MIT",
+    "keywords": ["Laravel UI", "bootstrap", "tabler", "laravel tabler"],
+    "homepage": "https://github.com/godruoyi/laravel-tabler-ui",
+    "type": "library",
     "authors": [
         {
             "name": "Godruoyi",
             "email": "godruoyi@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "php": "^7.2.5",
+        "illuminate/console": "^7.0",
+        "illuminate/filesystem": "^7.0",
+        "illuminate/support": "^7.0",
+        "laravel/ui": "^2.1"
+    },
     "autoload": {
         "psr-4": {
             "Godruoyi\\LaravelTablerUi\\": "src"
