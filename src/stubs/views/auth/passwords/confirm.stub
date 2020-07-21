@@ -1,0 +1,75 @@
+@extends('layouts.base')
+@section('title', __('Confirm Password'))
+@section('head')
+    <style>
+        .page-single {
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+        .col-login {
+            max-width: 30rem;
+        }
+        .h-2 {
+            height: 2rem !important;
+        }
+        .p-2 {
+            padding: 2rem !important;
+        }
+        .text-muted {
+            color: #9aa0ac !important;
+        }
+    </style>
+@endsection
+@section('content')
+    <div class="page-single">
+        <div class="container">
+            <div class="row">
+                <div class="col col-login mx-auto">
+                    <div class="text-center mb-4">
+                        <img src="https://preview.tabler.io/demo/brand/tabler.svg" class="h-2" alt="">
+                    </div>
+                    <form class="card" action="{{ route('password.confirm') }}" method="post">
+                        @csrf
+
+                        <div class="card-body p-2">
+                            <div class="card-title mb-4">{{ __('Confirm Password') }}</div>
+                            <p class="text-muted">{{ __('Please confirm your password before continuing.') }}</p>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">
+                                    {{ __('Password') }}
+                                    @if (Route::has('password.request'))
+                                        <a class="float-right small" href="{{ route('password.request') }}">
+                                            {{ __('Forgot Your Password?') }}
+                                        </a>
+                                    @endif
+                                </label>
+
+                                <input id="password" placeholder="Please enter your password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-footer">
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    {{ __('Confirm Password') }}
+                                </button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

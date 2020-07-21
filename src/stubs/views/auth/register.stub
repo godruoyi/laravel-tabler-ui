@@ -1,0 +1,97 @@
+@extends('layouts.base')
+@section('title', __('register'))
+@section('head')
+    <style>
+        .page-single {
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+        .col-login {
+            max-width: 24rem;
+        }
+        .h-2 {
+            height: 2rem !important;
+        }
+        .p-2 {
+            padding: 2rem !important;
+        }
+        .text-muted {
+            color: #9aa0ac !important;
+        }
+    </style>
+@endsection
+@section('content')
+    <div class="page-single">
+        <div class="container">
+            <div class="row">
+                <div class="col col-login mx-auto">
+                    <div class="text-center mb-4">
+                        <img src="https://preview.tabler.io/demo/brand/tabler.svg" class="h-2" alt="">
+                    </div>
+                    <form class="card" action="{{ route('register') }}" method="post">
+                        @csrf
+
+                        <div class="card-body p-2">
+                            <div class="card-title mb-4">{{ __('Register') }}</div>
+                            <div class="mb-3">
+                                <label class="form-label" for="name">{{ __('Name') }}</label>
+                                <input id="name" type="text" placeholder="Please enter name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">{{ __('E-Mail Address') }}</label>
+                                <input id="email" type="email" placeholder="Please enter email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">{{ __('Password') }}</label>
+
+                                <input id="password" type="password" placeholder="Please enter password"  class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password-confirm" class="form-label">{{ __('Confirm Password') }}</label>
+
+                                <input id="password-confirm" placeholder="Please enter passwirf again"  type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+
+                            <div class="form-footer">
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    {{ __('Register') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="text-center text-muted">
+                        Already have account? <a href="{{ route('login') }}">Sign in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

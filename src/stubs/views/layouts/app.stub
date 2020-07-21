@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    @include('layouts._head')
+</head>
+<body class="antialiased">
+    @include('layouts._header')
+    <div id="app" class="page">
+        <div class="content">
+            @yield('content')
+            @include('layouts._footer')
+        </div>
+    </div>
+    @yield('javascript')
+</body>
+</html>

@@ -1,0 +1,86 @@
+@extends('layouts.base')
+@section('title', __('Reset Password'))
+@section('head')
+    <style>
+        .page-single {
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+        .col-login {
+            max-width: 30rem;
+        }
+        .h-2 {
+            height: 2rem !important;
+        }
+        .p-2 {
+            padding: 2rem !important;
+        }
+        .text-muted {
+            color: #9aa0ac !important;
+        }
+    </style>
+@endsection
+@section('content')
+    <div class="page-single">
+        <div class="container">
+            <div class="row">
+                <div class="col col-login mx-auto">
+                    <div class="text-center mb-4">
+                        <img src="https://preview.tabler.io/demo/brand/tabler.svg" class="h-2" alt="">
+                    </div>
+                    <form class="card" action="{{ route('password.update') }}" method="post">
+                        @csrf
+
+                        <input type="hidden" name="token" value="{{ $token }}">
+
+                        <div class="card-body p-2">
+                            <div class="card-title mb-4">{{ __('Reset Password') }}</div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">{{ __('E-Mail Address') }}</label>
+
+                                <input id="email" placeholder="Please enter you email." type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">{{ __('Password') }}</label>
+
+                                <input id="password" placeholder="Please enter your password." type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password-confirm" class="form-label">{{ __('Confirm Password') }}</label>
+
+                                <input id="password-confirm" placeholder="Please enter your password again." type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+
+                            <div class="form-footer">
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    {{ __('Reset Password') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

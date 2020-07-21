@@ -1,0 +1,24 @@
+{
+    "name": "godruoyi/laravel-tabler-ui",
+    "description": "Package description here.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Godruoyi",
+            "email": "godruoyi@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Godruoyi\\LaravelTablerUi\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Godruoyi\\LaravelTablerUi\\TablerServiceProvider"
+            ]
+        }
+    }
+}
