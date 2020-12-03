@@ -6,7 +6,7 @@
 
 ## Introduction
 
-Laravel ui package tabler presets.
+Laravel ui package for tabler presets.
 
 ## Installing
 
@@ -14,9 +14,35 @@ Laravel ui package tabler presets.
 $ composer require godruoyi/laravel-tabler-ui -vvv
 ```
 
+The official version hasn't been released, you can install dev-master via:
+
+```shell
+$ composer require godruoyi/laravel-tabler-ui:dev-master
+```
+
 ## Usage
 
-TODO
+```
+// Generate basic scaffolding...
+php artisan ui tabler
+
+// or
+
+// Generate login / registration scaffolding...
+php artisan ui tabler --auth
+```
+
+More use go to [Laravel Ui Official Documentation](https://github.com/laravel/ui).
+
+If you want use Chinese language for authentication views, you can publish `zh_CN.json` to `resource/lang`:
+
+```
+php artisan vendor:publish --tag=laravel-tabler-lang-zh-CN
+```
+
+## Preview
+
+[OnLine preview](https://laravel-tabler-ui.godruoyi.com)
 
 ## Contributing
 
