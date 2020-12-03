@@ -1,12 +1,17 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    @include('layouts._head')
-</head>
-<body>
+@extends('layouts.app')
+
+@section('body')
+<body class="antialiased">
+    @include('layouts._header')
     <div id="app" class="page">
-        @yield('content')
+        <div class="content">
+            @yield('content')
+            @include('layouts._footer')
+        </div>
     </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
     @yield('javascript')
 </body>
-</html>
+@endsection

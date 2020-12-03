@@ -88,7 +88,7 @@ class Tabler
         TablerPreset::install();
 
         $command->info('Tabler scaffolding installed successfully.');
-        $command->comment('Please run "npm install && npm run dev" to compile your fresh scaffolding.');
+        $command->comment('Please run "npm install && npm run dev" or "yarn install && yarn run dev" to compile your fresh scaffolding.');
 
         if ($command->option('auth')) {
             $command->call('tabler:auth');

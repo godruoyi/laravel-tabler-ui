@@ -11,7 +11,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-    require('tabler/js/tabler.js');
+    require('@tabler/core');
 } catch (e) {}
 
 /**

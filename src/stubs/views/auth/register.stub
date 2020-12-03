@@ -1,97 +1,109 @@
-@extends('layouts.base')
-@section('title', __('register'))
-@section('head')
-    <style>
-        .page-single {
-            -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-align: center;
-            align-items: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            padding: 1rem 0;
-        }
-        .col-login {
-            max-width: 24rem;
-        }
-        .h-2 {
-            height: 2rem !important;
-        }
-        .p-2 {
-            padding: 2rem !important;
-        }
-        .text-muted {
-            color: #9aa0ac !important;
-        }
-    </style>
-@endsection
-@section('content')
-    <div class="page-single">
-        <div class="container">
-            <div class="row">
-                <div class="col col-login mx-auto">
-                    <div class="text-center mb-4">
-                        <img src="https://preview.tabler.io/demo/brand/tabler.svg" class="h-2" alt="">
+@extends('layouts.app')
+@section('title', __('Register'))
+
+@section('body')
+<body class="antialiased border-top-wide border-primary d-flex flex-column">
+    <div class="flex-fill d-flex flex-column justify-content-center py-4">
+        <div class="container-tight py-6">
+            <div class="text-center mb-4">
+                <!-- You can set your logo on here -->
+                <a href="."><img src="https://preview.tabler.io/static/logo.svg" height="36" alt=""></a>
+            </div>
+            <form class="card card-md" action="{{ route('register') }}" method="POST">
+                @csrf
+
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">{{ __('Create new account') }}</h2>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">{{ __('Name') }}</label>
+
+                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                            value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="{{ __('Please enter your name') }}">
+
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-                    <form class="card" action="{{ route('register') }}" method="post">
-                        @csrf
 
-                        <div class="card-body p-2">
-                            <div class="card-title mb-4">{{ __('Register') }}</div>
-                            <div class="mb-3">
-                                <label class="form-label" for="name">{{ __('Name') }}</label>
-                                <input id="name" type="text" placeholder="Please enter name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">{{ __('E-Mail Address') }}</label>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+                            value="{{ old('email') }}" required autocomplete="email" placeholder="{{ __('Please enter your email') }}">
 
-                            <div class="mb-3">
-                                <label for="email" class="form-label">{{ __('E-Mail Address') }}</label>
-                                <input id="email" type="email" placeholder="Please enter email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">{{ __('Password') }}</label>
+                        <div class="input-group input-group-flat">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"
+                                required autocomplete="new-password" placeholder="{{ __('Please enter your password') }}">
 
-                            <div class="mb-3">
-                                <label for="password" class="form-label">{{ __('Password') }}</label>
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
 
-                                <input id="password" type="password" placeholder="Please enter password"  class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="password-confirm" class="form-label">{{ __('Confirm Password') }}</label>
-
-                                <input id="password-confirm" placeholder="Please enter passwirf again"  type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-
-                            <div class="form-footer">
-                                <button type="submit" class="btn btn-primary btn-block">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
+                            <span class="input-group-text">
+                                <a href="#" class="link-secondary" title="Show password" data-toggle="tooltip"><svg
+                                        xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <circle cx="12" cy="12" r="2" />
+                                        <path
+                                            d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" />
+                                        </svg>
+                                </a>
+                            </span>
                         </div>
-                    </form>
-                    <div class="text-center text-muted">
-                        Already have account? <a href="{{ route('login') }}">Sign in</a>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password-confirm" class="form-label">{{ __('Confirm Password') }}</label>
+                        <div class="input-group input-group-flat">
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
+                                autocomplete="new-password" placeholder="{{ __('Please enter your password again') }}">
+
+                            <span class="input-group-text">
+                                <a href="#" class="link-secondary" title="Show password" data-toggle="tooltip">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <circle cx="12" cy="12" r="2" />
+                                        <path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" />
+                                    </svg>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-check">
+                            <input type="checkbox" class="form-check-input" />
+                            <span class="form-check-label"><a href="./terms-of-service.html"
+                                tabindex="-1">{{ __('Agree the terms and policy') }}</a></span>
+                        </label>
+                    </div>
+
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary w-100">{{ __('Register') }}</button>
                     </div>
                 </div>
+            </form>
+            <div class="text-center text-muted mt">
+                {{ __('Already have account?') }} <a href="{{ route('login') }}" tabindex="-1">{{ __('Login') }}</a>
             </div>
         </div>
     </div>
+</body>
 @endsection
+</html>
