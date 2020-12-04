@@ -42,7 +42,7 @@ php artisan vendor:publish --tag=laravel-tabler-lang-zh-CN
 
 ## Preview
 
-[OnLine preview](https://laravel-tabler-ui.godruoyi.com)
+[OnLine preview](https://laravel-tabler-ui-preview.godruoyi.com/)
 
 ## Contributing
 
