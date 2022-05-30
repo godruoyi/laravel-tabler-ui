@@ -31,7 +31,7 @@ class TablerPreset extends BasePreset
     protected static function updatePackageArray(array $packages)
     {
         return [
-            '@tabler/core' => '^1.0.0-alpha.12',
+            '@tabler/core' => '^1.0.0-beta10',
         ] + $packages;
     }
 

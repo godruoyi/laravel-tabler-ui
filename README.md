@@ -37,7 +37,7 @@ More use go to [Laravel Ui Official Documentation](https://github.com/laravel/ui
 If you want use Chinese language for authentication views, you can publish `zh_CN.json` to `resource/lang`:
 
 ```
-php artisan vendor:publish --tag=laravel-tabler-lang-zh-CN
+php artisan vendor:publish --tag=laravel-tabler-lang-cn
 ```
 
 ## Preview

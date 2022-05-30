@@ -23,7 +23,7 @@ class TablerServiceProvider extends ServiceProvider
 
             $this->publishes([
                 __DIR__.'/stubs/zh_CN.json' => resource_path('lang/zh_CN.json')
-            ], 'laravel-tabler-lang-zh-CN');
+            ], 'laravel-tabler-lang-cn');
         }
     }
 
